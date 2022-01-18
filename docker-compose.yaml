@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  node0:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20200:20200"
+      - "8545:8545"
+      - "30300:30300"
+    working_dir: /data
+    volumes:
+      - ./nodes/172.17.0.1/node0:/data
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 300M
+        reservations:
+          memory: 200M
+    container_name: node0
+    command: /data/start.sh
